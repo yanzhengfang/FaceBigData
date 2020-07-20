@@ -23,7 +23,7 @@ public class PageController {
      */
     @RequestMapping("/localFeaturePage")
     public String toLocalFeaturePage() {
-        return "feature/localFeaturePage";
+        return "feature/localIndex";
     }
 
 
@@ -33,7 +33,7 @@ public class PageController {
      */
     @RequestMapping("/remoteFeaturePage")
     public String toRemoteFeaturePage() {
-        return "feature/remoteFeaturePage";
+        return "feature/remoteIndex";
     }
 
 
@@ -43,7 +43,7 @@ public class PageController {
      */
     @RequestMapping("/sptDataPage")
     public String toSptDataPage() {
-        return "sptDataPage";
+        return "sptData/index";
     }
 
 
@@ -53,7 +53,7 @@ public class PageController {
      */
     @RequestMapping("/completeAccountPage")
     public String tocCompleteAccountPage() {
-        return "completeAccountPage";
+        return "completeAccount/index";
     }
 
     /**
@@ -62,7 +62,7 @@ public class PageController {
      */
     @RequestMapping("/dataAnalysisPage")
     public String toDataAnalysisPage() {
-        return "dataAnalysisPage";
+        return "dataAnalysis/index";
     }
 
 }
