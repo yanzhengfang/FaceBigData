@@ -77,19 +77,22 @@
 						</div>
 						<ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
 
-							<li data-name="home" class="layui-nav-item layui-nav-itemed layui-this">
+
+
+							<li data-name="get" class="layui-nav-item layui-this">
+								<a href="javascript:;" lay-href="/sptDataPage">
+									<i class="layui-icon layui-icon-senior"></i>
+									<cite>spt数据</cite>
+								</a>
+							</li>
+
+							<li data-name="home" class="layui-nav-item layui-nav-itemed ">
 								<a href="javascript:;" lay-href="/completeAccountPage">
 									<i class="layui-icon layui-icon-transfer"></i>
 									<cite>完整账户数据</cite>
 								</a>
 							</li>
 
-							<li data-name="get" class="layui-nav-item">
-								<a href="javascript:;" lay-href="/sptDataPage">
-									<i class="layui-icon layui-icon-senior"></i>
-									<cite>spt数据</cite>
-								</a>
-							</li>
 
 							<li class="layui-nav-item">
 								<a href="javascript:;">
@@ -149,7 +152,7 @@
 				<!-- 主体内容 -->
 				<div class="layui-body" id="LAY_app_body">
 					<div class="layadmin-tabsbody-item layui-show">
-						<iframe src="/completeAccountPage" frameborder="0" class="layadmin-iframe"></iframe>
+						<iframe src="/sptDataPage" frameborder="0" class="layadmin-iframe"></iframe>
 					</div>
 				</div>
 				<!-- 辅助元素，一般用于移动设备下遮罩 -->
