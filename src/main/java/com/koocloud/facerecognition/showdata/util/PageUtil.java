@@ -5,14 +5,11 @@ import org.springframework.util.StringUtils;
 
 import java.util.*;
 
-/**
- * @author anna
- * @create 2020-07-18 23:01
- */
+
 public class PageUtil {
     /**
      * 计算分页条数
-     * @param pageVo
+     * @param pageVo 页面统一参数
      */
     public static void countStart(PageVo pageVo){
         if(pageVo.getPage() != null && pageVo.getPage()>0 && pageVo.getLimit() != null && pageVo.getLimit()>0){
@@ -51,9 +48,10 @@ public class PageUtil {
                     Map<String,String> map = new HashMap<>();
                     String value = keyList.get(i);
                     if(!StringUtils.isEmpty(redisPrefix)){
-                        value = value.substring(redisPrefix.length()-1,value.length());
+                        value = value.substring(redisPrefix.length());
                     }
-                    map.put(value,redisList.get(i));
+                    map.put("key",value);
+                    map.put("value",redisList.get(i));
                     res.add(map);
                 }
             }

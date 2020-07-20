@@ -40,16 +40,16 @@ var cols_data = [
         title: '票卡回收标志',
         align: 'center'
     },
-    {
-        field: 'appId',
-        title: 'appid',
-        align: 'center'
-    },
-    {
-        field: 'faceFeature',
-        title: '人脸特征',
-        align: 'center'
-    }]
+        {
+            field: 'appId',
+            title: 'appid',
+            align: 'center'
+        },
+        {
+            field: 'faceFeature',
+            title: '人脸特征',
+            align: 'center'
+        }]
 ]
 layui.config({
     base: 'main/' //静态资源所在路径
