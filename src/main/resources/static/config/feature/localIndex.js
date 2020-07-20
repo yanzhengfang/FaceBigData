@@ -10,6 +10,7 @@ var cols_data = [
     }, {
         field: 'key',
         title: '卡号',
+        width: '20%',
         align: 'center'
     },{
         field: 'value',
