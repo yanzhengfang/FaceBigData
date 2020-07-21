@@ -10,24 +10,21 @@ spring:
         max-idle: 10
         min-idle: 0
     local:
-      host: localhost
-      password:
+      host: 192.168.126.254
+      password: 123456
       port: 6379
     remote:
-      host: localhost
-      password:
+      host: 192.168.126.254
+      password: 123456
       port: 6379
-    jedis:
-      pool:
-        max-wait:
 
 
   datasource:
 
     mainsource:
-      url: jdbc:mysql://localhost:3306/faceMainData?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      url: jdbc:mysql://192.168.126.254:3306/faceMainData?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
       username: root
-      password: 123456
+      password: root
       driverClassName: com.mysql.cj.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource
       initialSize: 5
@@ -41,9 +38,9 @@ spring:
 
 
     sptsource:
-      url: jdbc:mysql://localhost:3306/faceSptData?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      url: jdbc:mysql://192.168.126.254:3306/faceSptData?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
       username: root
-      password: 123456
+      password: root
       driverClassName: com.mysql.cj.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource
       initialSize: 5

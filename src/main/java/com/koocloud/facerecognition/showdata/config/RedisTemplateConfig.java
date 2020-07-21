@@ -3,10 +3,11 @@ package com.koocloud.facerecognition.showdata.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.lettuce.core.dynamic.annotation.Value;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
@@ -45,23 +46,56 @@ public class RedisTemplateConfig extends CachingConfigurerSupport {
     public GenericObjectPoolConfig<LettucePoolingClientConfiguration> redisPool() {
         return new GenericObjectPoolConfig<>();
     }
-
     /**
-     * 本地的redis
+     * 本地redis配置信息
      */
-    @Bean
-    @ConfigurationProperties(prefix = "spring.redis.local")
-    public RedisStandaloneConfiguration redisLocalConfig() {
-        return new RedisStandaloneConfiguration();
+    @Configuration
+    public static class LocalRedisConfig {
+        @org.springframework.beans.factory.annotation.Value("${spring.redis.local.host:127.0.0.1}")
+        private String host;
+        @org.springframework.beans.factory.annotation.Value("${spring.redis.local.port:6379}")
+        private Integer port;
+        @org.springframework.beans.factory.annotation.Value("${spring.redis.local.password:}")
+        private String password;
+        @org.springframework.beans.factory.annotation.Value("${spring.redis.local.database:0}")
+        private Integer database;
+
+        @Bean
+        public RedisStandaloneConfiguration redisLocalConfig() {
+            RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
+            config.setHostName(host);
+            config.setPassword(RedisPassword.of(password));
+            config.setPort(port);
+            config.setDatabase(database);
+            return config;
+        }
     }
 
+
     /**
-     * remote redis
+     * 远程数据配置
      */
-    @Bean
-    @ConfigurationProperties(prefix = "spring.redis.remote")
-    public RedisStandaloneConfiguration redisRemoteConfig() {
-        return new RedisStandaloneConfiguration();
+    @Configuration
+    @ConditionalOnProperty(name = "host", prefix = "spring.remote-redis")
+    public static class rempoteRedisConfig {
+        @Value("${spring.remote-redis.host:127.0.0.1}")
+        private String host;
+        @Value("${spring.remote-redis.port:6379}")
+        private Integer port;
+        @Value("${spring.remote-redis.password:}")
+        private String password;
+        @Value("${spring.remote-redis.database:0}")
+        private Integer database;
+
+        @Bean
+        public RedisStandaloneConfiguration redisRemoteConfig() {
+            RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
+            config.setHostName(host);
+            config.setPassword(RedisPassword.of(password));
+            config.setPort(port);
+            config.setDatabase(database);
+            return config;
+        }
     }
 
     /**
